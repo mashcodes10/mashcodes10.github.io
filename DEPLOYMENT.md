@@ -84,6 +84,14 @@ git push -u origin main
 3. Check **Allow GitHub Actions to create and approve pull requests**
 4. Click **Save**
 
+### Step 6: Enable GitHub Pages with Actions
+
+1. Go to **Settings** → **Pages**
+2. Under **Source**, select **GitHub Actions**
+3. Save the settings
+
+**Important**: The updated workflow includes proper permissions configuration to avoid deployment errors.
+
 ## 🔄 GitHub Actions Workflow
 
 The `.github/workflows/deploy.yml` file will automatically:
@@ -131,6 +139,27 @@ After deployment, verify:
 - [ ] Mobile responsiveness works
 
 ## 🐛 Troubleshooting
+
+### Permission Denied Error (403)
+If you see `Permission to [repo] denied to github-actions[bot]`:
+
+1. **Check Repository Settings**:
+   - Go to **Settings** → **Actions** → **General**
+   - Set **Workflow permissions** to **Read and write permissions**
+   - Enable **Allow GitHub Actions to create and approve pull requests**
+
+2. **Verify Pages Configuration**:
+   - Go to **Settings** → **Pages**
+   - Ensure **Source** is set to **GitHub Actions**
+
+3. **Check Workflow Permissions**:
+   - Ensure your workflow file includes proper permissions:
+   ```yaml
+   permissions:
+     contents: read
+     pages: write
+     id-token: write
+   ```
 
 ### Build Fails
 - Check GitHub Actions tab for error details
