@@ -1,0 +1,76 @@
+import NextLink from 'next/link'
+import Image from 'next/image'
+import { Box, Text, LinkBox, LinkOverlay, Badge } from '@chakra-ui/react'
+import { Global } from '@emotion/react'
+
+export const GridItem = ({ children, href, title, thumbnail, external = true }) => (
+  <Box w="100%" textAlign="center">
+    <LinkBox cursor="pointer">
+      <Image
+        src={thumbnail}
+        alt={title}
+        className="grid-item-thumbnail"
+        placeholder="blur"
+        loading="lazy"
+      />
+      {external ? (
+        <LinkOverlay href={href} target="_blank">
+          <Text mt={2}>{title}</Text>
+        </LinkOverlay>
+      ) : (
+        <LinkOverlay as={NextLink} href={href} scroll={false}>
+          <Text mt={2}>{title}</Text>
+        </LinkOverlay>
+      )}
+      <Text fontSize={14}>{children}</Text>
+    </LinkBox>
+  </Box>
+)
+
+export const WorkGridItem = ({
+  children,
+  category = 'works',
+  id,
+  title,
+  thumbnail
+}) => (
+  <Box w="100%" textAlign="center">
+    <LinkBox
+      as={NextLink}
+      href={`/${category}/${id}`}
+      scroll={false}
+      cursor="pointer"
+    >
+      <Image
+        src={thumbnail}
+        alt={title}
+        className="grid-item-thumbnail"
+        placeholder="blur"
+      />
+      <LinkOverlay as="div" href={`/${category}/${id}`}>
+        <Text mt={2} fontSize={20}>
+          {title}
+        </Text>
+      </LinkOverlay>
+      <Text fontSize={14} mb={3}>{children}</Text>
+      
+      <Badge
+        colorScheme="tealBlue"
+        variant="subtle"
+        size="sm"
+      >
+        View Project
+      </Badge>
+    </LinkBox>
+  </Box>
+)
+
+export const GridItemStyle = () => (
+  <Global
+    styles={`
+      .grid-item-thumbnail {
+        border-radius: 12px;
+      }
+    `}
+  />
+)
