@@ -13,9 +13,10 @@ import {
   IconButton,
   useColorModeValue,
   Button,
-  HStack
+  HStack,
+  useColorMode
 } from '@chakra-ui/react'
-import { HamburgerIcon } from '@chakra-ui/icons'
+import { HamburgerIcon, MoonIcon, SunIcon } from '@chakra-ui/icons'
 import ThemeToggleButton from './theme-toggle-button'
 import { IoLogoGithub } from 'react-icons/io5'
 
@@ -59,6 +60,7 @@ const MenuLink = forwardRef((props, ref) => (
 
 const Navbar = props => {
   const { path } = props
+  const { toggleColorMode } = useColorMode()
   const bgColor = useColorModeValue('rgba(240, 231, 219, 0.8)', 'rgba(32, 32, 35, 0.8)')
   const borderColor = useColorModeValue('blackAlpha.100', 'whiteAlpha.100')
 
@@ -74,60 +76,85 @@ const Navbar = props => {
       zIndex={1000}
       {...props}
     >
-      <Container
-        display="flex"
-        p={3}
-        maxW="container.lg"
-        align="center"
-        justify="space-between"
-        minH="60px"
-      >
-        {/* Logo */}
-        <Flex align="center">
-          <Logo />
-        </Flex>
-
-        {/* Desktop Navigation */}
-        <HStack
-          spacing={1}
-          display={{ base: 'none', md: 'flex' }}
-          flex={1}
-          justify="center"
+      <Box position="relative" w="100%">
+        <Container
+          display="flex"
+          p={3}
+          maxW="container.lg"
+          align="center"
+          justify="space-between"
+          minH="60px"
         >
-          <LinkItem href="/" path={path}>
-            Home
-          </LinkItem>
-          <LinkItem href="/works" path={path}>
-            Works
-          </LinkItem>
-          <LinkItem href="/posts" path={path}>
-            Radar
-          </LinkItem>
-          <LinkItem href="/campus" path={path}>
-            Campus
-          </LinkItem>
-          <LinkItem href="/contact" path={path}>
-            Contact
-          </LinkItem>
-        </HStack>
+          {/* Logo */}
+          <Flex align="center">
+            <Logo />
+          </Flex>
 
-        {/* Right Side Actions */}
-        <HStack spacing={2}>
-          <Button
-            as={NextLink}
-            href="https://github.com/mashcodes10/mashter-portfolio"
-            target="_blank"
-            variant="ghost"
-            size="sm"
-            leftIcon={<IoLogoGithub />}
-            display={{ base: 'none', sm: 'flex' }}
-            _hover={{
-              bg: useColorModeValue('blackAlpha.50', 'whiteAlpha.100')
-            }}
+          {/* Desktop Navigation */}
+          <HStack
+            spacing={1}
+            display={{ base: 'none', md: 'flex' }}
+            flex={1}
+            justify="center"
           >
-            Source
-          </Button>
-          
+            <LinkItem href="/" path={path}>
+              Home
+            </LinkItem>
+            <LinkItem href="/works" path={path}>
+              Works
+            </LinkItem>
+            <LinkItem href="/posts" path={path}>
+              Radar
+            </LinkItem>
+            <LinkItem href="/campus" path={path}>
+              Campus
+            </LinkItem>
+            <LinkItem href="/contact" path={path}>
+              Contact
+            </LinkItem>
+          </HStack>
+
+          {/* Desktop Right Side Actions */}
+          <Flex align="center" gap={1} display={{ base: 'none', md: 'flex' }}>
+            <Button
+              as={NextLink}
+              href="https://github.com/mashcodes10/mashter-portfolio"
+              target="_blank"
+              variant="ghost"
+              size="sm"
+              leftIcon={<IoLogoGithub />}
+              _hover={{
+                bg: useColorModeValue('blackAlpha.50', 'whiteAlpha.100')
+              }}
+            >
+              Source
+            </Button>
+            
+            <IconButton
+              aria-label="Toggle theme"
+              variant="ghost"
+              size="sm"
+              icon={useColorModeValue(<MoonIcon />, <SunIcon />)}
+              onClick={toggleColorMode}
+              colorScheme={useColorModeValue('purple', 'orange')}
+              _hover={{
+                bg: useColorModeValue('blackAlpha.50', 'whiteAlpha.100')
+              }}
+            />
+          </Flex>
+        </Container>
+
+        {/* Mobile Right Side Actions - Absolute Positioned */}
+        <Flex
+          position="absolute"
+          top="50%"
+          right="4px"
+          transform="translateY(-50%)"
+          align="center"
+          gap={0}
+          display={{ base: 'flex', md: 'none' }}
+          zIndex={10}
+        >
           <IconButton
             as={NextLink}
             href="https://github.com/mashcodes10/mashter-portfolio"
@@ -135,63 +162,75 @@ const Navbar = props => {
             variant="ghost"
             size="sm"
             icon={<IoLogoGithub />}
-            display={{ base: 'flex', sm: 'none' }}
             aria-label="GitHub"
+            minW="40px"
+            h="40px"
             _hover={{
               bg: useColorModeValue('blackAlpha.50', 'whiteAlpha.100')
             }}
           />
 
-          <ThemeToggleButton />
+          <IconButton
+            aria-label="Toggle theme"
+            variant="ghost"
+            size="sm"
+            minW="40px"
+            h="40px"
+            icon={useColorModeValue(<MoonIcon />, <SunIcon />)}
+            onClick={toggleColorMode}
+            colorScheme={useColorModeValue('purple', 'orange')}
+            _hover={{
+              bg: useColorModeValue('blackAlpha.50', 'whiteAlpha.100')
+            }}
+          />
 
-          {/* Mobile Menu */}
-          <Box display={{ base: 'block', md: 'none' }}>
-            <Menu isLazy>
-              <MenuButton
-                as={IconButton}
-                icon={<HamburgerIcon />}
-                variant="ghost"
-                size="sm"
-                aria-label="Navigation Menu"
-                _hover={{
-                  bg: useColorModeValue('blackAlpha.50', 'whiteAlpha.100')
-                }}
-              />
-              <MenuList
-                bg={useColorModeValue('white', 'gray.800')}
-                borderColor={borderColor}
-                shadow="xl"
+          <Menu isLazy>
+            <MenuButton
+              as={IconButton}
+              icon={<HamburgerIcon />}
+              variant="ghost"
+              size="sm"
+              minW="40px"
+              h="40px"
+              aria-label="Navigation Menu"
+              _hover={{
+                bg: useColorModeValue('blackAlpha.50', 'whiteAlpha.100')
+              }}
+            />
+            <MenuList
+              bg={useColorModeValue('white', 'gray.800')}
+              borderColor={borderColor}
+              shadow="xl"
+              py={2}
+            >
+              <MenuItem as={MenuLink} href="/" fontSize="sm" py={2}>
+                Home
+              </MenuItem>
+              <MenuItem as={MenuLink} href="/works" fontSize="sm" py={2}>
+                Works
+              </MenuItem>
+              <MenuItem as={MenuLink} href="/posts" fontSize="sm" py={2}>
+                Radar
+              </MenuItem>
+              <MenuItem as={MenuLink} href="/campus" fontSize="sm" py={2}>
+                Campus
+              </MenuItem>
+              <MenuItem as={MenuLink} href="/contact" fontSize="sm" py={2}>
+                Contact
+              </MenuItem>
+              <MenuItem
+                as={Link}
+                href="https://github.com/mashcodes10/mashter-portfolio"
+                target="_blank"
+                fontSize="sm"
                 py={2}
               >
-                <MenuItem as={MenuLink} href="/" fontSize="sm" py={2}>
-                  Home
-                </MenuItem>
-                <MenuItem as={MenuLink} href="/works" fontSize="sm" py={2}>
-                  Works
-                </MenuItem>
-                <MenuItem as={MenuLink} href="/posts" fontSize="sm" py={2}>
-                  Radar
-                </MenuItem>
-                <MenuItem as={MenuLink} href="/campus" fontSize="sm" py={2}>
-                  Campus
-                </MenuItem>
-                <MenuItem as={MenuLink} href="/contact" fontSize="sm" py={2}>
-                  Contact
-                </MenuItem>
-                <MenuItem
-                  as={Link}
-                  href="https://github.com/mashcodes10/mashter-portfolio"
-                  target="_blank"
-                  fontSize="sm"
-                  py={2}
-                >
-                  View Source
-                </MenuItem>
-              </MenuList>
-            </Menu>
-          </Box>
-        </HStack>
-      </Container>
+                View Source
+              </MenuItem>
+            </MenuList>
+          </Menu>
+        </Flex>
+      </Box>
     </Box>
   )
 }

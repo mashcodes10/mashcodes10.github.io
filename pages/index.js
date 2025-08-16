@@ -32,7 +32,7 @@ const Home = () => (
           <Heading as="h2" variant="page-title">
             Md. Mashiur Rahman Khan
           </Heading>
-          <p>Vanderbilt CS + Math | AI, Machine Learning, & Full-Stack Development</p>
+          <p>Vanderbilt CS + Math | AI, Machine Learning, & Software Engineering</p>
         </Box>
         <Box
           flexShrink={0}
@@ -74,7 +74,13 @@ const Home = () => (
           </Heading>
         </Box>
         <Paragraph>
-          Hey, I&apos;m Mashiur — a Computer Science and Math student at Vanderbilt and a full-time builder of random ideas. Sometimes they turn into polished AI tools or full-stack apps; other times… well, they live in my GitHub graveyard. I&apos;m into machine learning, clean design, and making tech feel less like tech and more like magic. Most days you&apos;ll find me with too many browser tabs open, chasing an idea I swear will only take an hour, reading about new AI research, tweaking some project at 2 a.m., or plotting my next move over coffee.
+        Hi, I’m Mashiur, a junior at Vanderbilt University majoring in Computer Science and Mathematics. I love building impactful software that bridges AI with real-world needs.
+
+Recently I built an AWS Bedrock chatbot powered by Claude 3 Sonnet that analyzed 1,000+ SEC filings, improving Q&A accuracy by 60% through a context-aware pipeline. At the Vanderbilt School of Nursing, I developed a generative AI chatbot to streamline internal grant analysis, and I led workshops for faculty to adopt AI tools.
+
+I’m also working with Yrikka, an AI safety startup, on a Cornell Tech project to close the synthetic-to-real data gap by fine-tuning YOLO models on synthetic data for more robust object detection in autonomous systems.
+Through fellowships like Cornell Tech AI/ML, I’ve strengthened my expertise in scalable systems, applied machine learning, and full-stack development. I’m seeking opportunities to contribute to building reliable, high-impact applications that solve meaningful problems.
+
         </Paragraph>
         <Box align="center" my={4}>
           <Button
@@ -214,7 +220,7 @@ const Home = () => (
           <Paragraph>
 Machine Learning, AI Research, Full-stack Development, Coffee, 
             Late-night grinding Sessions, Open Source Projects, Tech Podcasts, 
-            Soccer, Diverse cuisines
+            Soccer, Diverse Cuisines
           </Paragraph>
         </Box>
       </Section>

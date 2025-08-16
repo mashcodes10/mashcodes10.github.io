@@ -2,6 +2,7 @@ import {
   Container,
   Badge,
   List,
+  Link,
   ListItem,
   Box,
   Text,
@@ -9,6 +10,7 @@ import {
 } from '@chakra-ui/react'
 import { Title, WorkImage, Meta } from '../../components/work'
 import Layout from '../../components/layouts/article'
+import { ExternalLinkIcon } from '@chakra-ui/icons'
 
 const Work = () => (
   <Layout title="Khanflow">
@@ -80,6 +82,18 @@ const Work = () => (
           <ListItem display="flex" alignItems="flex-start" flexWrap="wrap">
             <Meta>Tools</Meta>
             <Text>LangChain for orchestration, CRON-based automation for recurring tasks, WebSockets for real-time updates</Text>
+          </ListItem>
+          <ListItem display="flex" alignItems="flex-start" flexWrap="wrap">
+            <Meta>Repository</Meta>
+            <Link 
+              href="https://github.com/mashcodes10/khanflow"
+              color="tealBlue.500"
+              _hover={{ textDecoration: 'underline' }}
+              target="_blank"
+              flex="1"
+            >
+              khanflow <ExternalLinkIcon mx="2px" />
+            </Link>
           </ListItem>
         </List>
       </Box>

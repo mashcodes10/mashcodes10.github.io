@@ -3,12 +3,14 @@ import {
   Badge,
   List,
   ListItem,
+  Link,
   Box,
   Text,
   useColorModeValue
 } from '@chakra-ui/react'
 import Layout from '../../components/layouts/article'
 import { Title, WorkImage, Meta } from '../../components/work'
+import { ExternalLinkIcon } from '@chakra-ui/icons'
 
 const Work = () => (
   <Layout title="MLT GEN AI Partner Bot">
@@ -61,10 +63,16 @@ const Work = () => (
             <Meta>Stack</Meta>
             <Text>AWS Bedrock (Claude 3 Sonnet), Python, Boto3, AWS Lambda, EDGAR API, SEC 10-Q Filings, RAG Pipeline</Text>
           </ListItem>
-          <ListItem display="flex" alignItems="flex-start" flexWrap="wrap">
-            <Meta>Website</Meta>
-            <Text color={useColorModeValue('gray.600', 'gray.400')}>(GitHub or demo link pending)</Text>
-          </ListItem>
+          <Meta>Repository</Meta>
+            <Link 
+              href="https://github.com/mashcodes10/mlt-genai-partner-bot"
+              color="tealBlue.500"
+              _hover={{ textDecoration: 'underline' }}
+              target="_blank"
+              flex="1"
+            >
+              mlt-genai-partner-bot <ExternalLinkIcon mx="2px" />
+            </Link>
         </List>
       </Box>
 
