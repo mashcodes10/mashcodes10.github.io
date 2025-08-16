@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://mashcodes10.github.io/sitemap.xml
+
+# Allow search engines to crawl all pages
+Disallow:
+
+# Additional instructions for search engines
+Crawl-delay: 1

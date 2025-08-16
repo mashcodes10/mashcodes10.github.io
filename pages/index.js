@@ -1,4 +1,5 @@
 import NextLink from 'next/link'
+import Head from 'next/head'
 import {
   Link,
   Container,
@@ -24,6 +25,10 @@ import Image from 'next/image'
 
 const Home = () => (
   <Layout>
+    <Head>
+      <title>Md. Mashiur Rahman Khan - AI & Software Engineering Portfolio</title>
+      <meta name="description" content="Mashiur Rahman Khan, Vanderbilt CS + Math student specializing in AI, Machine Learning, and Software Engineering. Building impactful software that bridges AI with real-world needs." />
+    </Head>
     <Container>
 
 
