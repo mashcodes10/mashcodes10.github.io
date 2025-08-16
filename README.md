@@ -6,7 +6,7 @@ A modern, responsive portfolio website built with Next.js and Chakra UI, showcas
 
 ## 🚀 Live Demo
 
-Visit the live portfolio: [Your Portfolio URL]
+Visit the live portfolio: https://mashcodes10.github.io/
 
 ## ✨ Features
 
