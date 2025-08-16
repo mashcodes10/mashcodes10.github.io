@@ -156,7 +156,7 @@ const Navbar = props => {
         >
           <IconButton
             as={NextLink}
-            href="https://github.com/mashcodes10/mashter-portfolio"
+            href="https://github.com/mashcodes10/mashcodes10.github.io"
             target="_blank"
             variant="ghost"
             size="sm"
