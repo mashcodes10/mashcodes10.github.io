@@ -34,11 +34,15 @@ jobs:
       run: |
         npm run lint
         npm run build
+      env:
+        NEXT_PUBLIC_GA_ID: ${{ secrets.NEXT_PUBLIC_GA_ID }}
         
     - name: Export static files 📁
       run: |
         npm run build
         touch out/.nojekyll
+      env:
+        NEXT_PUBLIC_GA_ID: ${{ secrets.NEXT_PUBLIC_GA_ID }}
         
     - name: Setup Pages 📄
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
